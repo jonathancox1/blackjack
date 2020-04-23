@@ -30,13 +30,16 @@ const buttons = document.querySelector(".buttons");
 buttons.addEventListener("click", function (e) {
   console.log(event.target.id);
   if (event.target.id === "deal-button") {
-    renderCards(playersHand, dealCards());
-    renderCards(dealersHand, dealCards());
-  } else if (event.target.id === "hit-button") {
-    renderCards(playersHand, hitMe());
-    renderCards(dealersHand, hitMe());
-  } else {
     renderCards(playersHand, hitMe(getCardImageUrl(getCard(playerScore))));
+    renderCards(playersHand, hitMe(getCardImageUrl(getCard(playerScore))));
+    renderCards(dealersHand, hitMe(getCardImageUrl(getCard(dealerScore))));
+    renderCards(dealersHand, hitMe(getCardImageUrl(getCard(dealerScore))));
+  } else if (event.target.id === "hit-button") {
+    renderCards(playersHand, hitMe(getCardImageUrl(getCard(playerScore))));
+  } else {
+    renderCards(dealersHand, hitMe(getCardImageUrl(getCard(dealerScore))));
+    console.log(dealerScore);
+    console.log(playerScore);
   }
 });
 
@@ -97,9 +100,20 @@ const dealerScore = [];
 
 //player points
 const playerPoints = document.querySelector("#player-points");
+function sumPlayer() {
+  let sum = 0;
+  for (let i = 0; i < playerScore.length; i++) {
+    sum += playerScore[i];
+  }
+  let string = sum.toString();
+  return string;
+}
+playerPoints.textContent = sumPlayer();
 
 //dealer points
 const dealerPoints = document.querySelector("#dealer-points");
+const sumDealer = dealerScore.reduce((acc, val) => acc + val, 0);
+dealerPoints.textContent = sumDealer;
 
 // which card from the deck
 // appends the card value to the score array
