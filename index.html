@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlackJack | Javascript</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    
+    <div class="row m-5">
+    <div id="table" class="col">
+        <div class="card p-5 bg-light text-center">
+            <div class="card-header text-center">BlackJack</div>
+        
+
+        <div id="messages"></div>
+        
+        <label>Dealer: </label>
+        
+        <label id="dealer-points" class="points"></label>
+        
+        <div id="dealer-hand" class="hand row justfy-items-center">
+           <!-- insert cards here -->
+        </div>
+        
+        <label>Player: </label>
+        
+        <label id="player-points" class="points"></label>
+        
+        <div id="player-hand" class="hand row">
+        </div>
+        
+        <div class="buttons">
+        
+        <button id="deal-button">Deal</button>
+        
+        <button id="hit-button">Hit</button>
+        
+        <button id="stand-button">Stand</button>
+        
+        </div>
+        
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
