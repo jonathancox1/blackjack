@@ -119,11 +119,23 @@ function sum(who) {
   if (who === dealerScore) {
     let sum = dealerScore.reduce((acc, val) => acc + val, 0);
     console.log(`dealer ${sum} is sum`);
-    return sum;
+    if (sum === 21) {
+      return "BlackJack - You Win!";
+    } else if (sum > 21) {
+      return `${sum} Bust!`;
+    } else {
+      return sum;
+    }
   } else {
     let sum = playerScore.reduce((acc, val) => acc + val, 0);
     console.log(`player ${sum} is sum`);
-    return sum;
+    if (sum === 21) {
+      return "BlackJack - You Win!";
+    } else if (sum > 21) {
+      return `${sum} Bust!`;
+    } else {
+      return sum;
+    }
   }
 }
 
