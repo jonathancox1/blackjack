@@ -19,7 +19,7 @@ function createDeck() {
   return [hearts.concat(spades, clubs, diamonds)];
 }
 // build the deck
-const deck = createDeck();
+let deck = createDeck();
 
 // get deal button
 const dealButton = document.querySelector("#deal-button");
@@ -39,15 +39,21 @@ const buttons = document.querySelector(".buttons");
 // add event listener to parent <div> class = 'buttons'
 buttons.addEventListener("click", function (e) {
   if (event.target.id === "deal-button") {
+    // deal button
     renderCards(playersHand, hitMe(getCard(playerScore)));
     renderCards(playersHand, hitMe(getCard(playerScore)));
     renderCards(dealersHand, hitMe(getCard(dealerScore)));
     renderCards(dealersHand, hitMe(getCard(dealerScore)));
+    playerPoints.textContent = sum(playerScore); // only sums for dealer, need to add argument
+    dealerPoints.textContent = sum(dealerScore); // only sums for dealer, need to add argument
   } else if (event.target.id === "hit-button") {
+    //hit button
     renderCards(playersHand, hitMe(getCard(playerScore)));
+    playerPoints.textContent = sum(playerScore);
   } else {
+    // stay button
     renderCards(dealersHand, hitMe(getCard(dealerScore)));
-    dealerPoints.textContent = sum(); // only sums for dealer, need to add argument
+    dealerPoints.textContent = sum(dealerScore);
   }
 });
 
@@ -88,16 +94,18 @@ function getCardImageUrl(card) {
 // which card from the deck
 // appends the card value to the score array
 function getCard(who) {
-  const rand = Math.floor(Math.random() * (deck[0].length + 1));
+  const rand = Math.floor(Math.random() * deck[0].length);
   console.log("random number" + [rand]);
-  addToScore(deck[0][rand]);
-  return getCardImageUrl(deck[0][rand]);
+  addToScore(who, deck[0][rand]);
+  const cardImage = getCardImageUrl(deck[0][rand]);
+  deck[0] = deck[0].filter((cardObject) => cardObject != deck[0][rand]);
+  return cardImage;
 }
 
 // add card points to score
-function addToScore(card) {
-  console.log(card.point + "points to add to score");
-  dealerScore.push(card.point); // adding just to playerScore for now
+function addToScore(who, card) {
+  console.log(`${card.point} added to ${who}`);
+  who.push(card.point); // adding just to dealerScore for now
 }
 
 const playerScore = [];
@@ -108,8 +116,15 @@ const playerPoints = document.querySelector("#player-points");
 
 // sum points function
 function sum(who) {
-  const sumDealer = dealerScore.reduce((acc, val) => acc + val, 0);
-  return sumDealer;
+  if (who === dealerScore) {
+    let sum = dealerScore.reduce((acc, val) => acc + val, 0);
+    console.log(`dealer ${sum} is sum`);
+    return sum;
+  } else {
+    let sum = playerScore.reduce((acc, val) => acc + val, 0);
+    console.log(`player ${sum} is sum`);
+    return sum;
+  }
 }
 
 //dealer points
