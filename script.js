@@ -1,3 +1,6 @@
+// to do list //
+// deal animations
+
 // create the format for each card
 function createCard(point, suit) {
   return { point, suit };
@@ -36,6 +39,10 @@ const playersHand = document.querySelector("#player-hand");
 
 // get button parent <div> class
 const buttons = document.querySelector(".buttons");
+
+// get modalContent
+const modalContent = document.querySelector("#modalContent");
+
 // add event listener to parent <div> class = 'buttons'
 buttons.addEventListener("click", function (e) {
   if (event.target.id === "deal-button") {
@@ -67,7 +74,7 @@ function renderCards(who, dealOrHit) {
 // render 1 card Hit function
 function hitMe(url) {
   return `
-    <img src="${url}" width="80px" stye="padding: 0px 20px 0px 20px;">
+    <img src="${url}" width="80px">
     `;
 }
 
@@ -105,7 +112,7 @@ function getCard(who) {
 // add card points to score
 function addToScore(who, card) {
   console.log(`${card.point} added to ${who}`);
-  who.push(card.point); // adding just to dealerScore for now
+  who.push(card.point);
 }
 
 const playerScore = [];
@@ -120,8 +127,12 @@ function sum(who) {
     let sum = dealerScore.reduce((acc, val) => acc + val, 0);
     console.log(`dealer ${sum} is sum`);
     if (sum === 21) {
-      return "BlackJack - You Win!";
+      refresh();
+      modalContent.textContent = "BlackJack Dealer Wins!";
+      return "BlackJack - Dealer Wins!";
     } else if (sum > 21) {
+      refresh();
+      modalContent.textContent = "Dealer Bust! You Win!";
       return `${sum} Bust!`;
     } else {
       return sum;
@@ -130,15 +141,24 @@ function sum(who) {
     let sum = playerScore.reduce((acc, val) => acc + val, 0);
     console.log(`player ${sum} is sum`);
     if (sum === 21) {
+      refresh();
+      modalContent.textContent = "BlackJack You Win!";
       return "BlackJack - You Win!";
     } else if (sum > 21) {
+      refresh();
+      modalContent.textContent = "Bust! Dealer Wins!";
       return `${sum} Bust!`;
     } else {
       return sum;
     }
   }
 }
-
+// refresh function for when the someone has won
+function refresh() {
+  console.log("timeout");
+  setTimeout(location.reload.bind(window.location), 3000);
+  $("#exampleModalCenter").modal("show");
+}
 //dealer points
 const dealerPoints = document.querySelector("#dealer-points");
 const sumDealer = dealerScore.reduce((acc, val) => acc + val, 0);
