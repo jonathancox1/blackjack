@@ -1,4 +1,4 @@
 # blackjack
 
-interactive
+interactive game
 built with Javascript
