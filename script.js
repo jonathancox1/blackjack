@@ -47,8 +47,7 @@ buttons.addEventListener("click", function (e) {
     renderCards(playersHand, hitMe(getCard(playerScore)));
   } else {
     renderCards(dealersHand, hitMe(getCard(dealerScore)));
-    console.log(dealerScore);
-    console.log(playerScore);
+    dealerPoints.textContent = sum(); // only sums for dealer, need to add argument
   }
 });
 
@@ -71,7 +70,7 @@ function getCardImageUrl(card) {
   if (card.point < 2) {
     console.log(card.point + "ace");
     return `images/ace_of_${card.suit}.png`;
-  } else if (card.point < 10) {
+  } else if (card.point <= 10) {
     console.log(card.point + "point");
     return `images/${card.point}_of_${card.suit}.png`;
   } else if (card.point === 11) {
@@ -89,18 +88,17 @@ function getCardImageUrl(card) {
 // which card from the deck
 // appends the card value to the score array
 function getCard(who) {
-  let rand = Math.floor(Math.random() * (deck[0].length - 1));
+  const rand = Math.floor(Math.random() * (deck[0].length + 1));
   console.log("random number" + [rand]);
-  // let removed = deck[0].splice(rand);
-  // console.log(removed);
+  addToScore(deck[0][rand]);
   return getCardImageUrl(deck[0][rand]);
 }
 
-// // remove from the deck
-// function removeFromDeck(card) {
-//   console.log(card);
-//   delete deck.card;
-// }
+// add card points to score
+function addToScore(card) {
+  console.log(card.point + "points to add to score");
+  dealerScore.push(card.point); // adding just to playerScore for now
+}
 
 const playerScore = [];
 const dealerScore = [];
@@ -109,17 +107,11 @@ const dealerScore = [];
 const playerPoints = document.querySelector("#player-points");
 
 // sum points function
-function sumPlayer() {
-  let sum = 0;
-  for (let i = 0; i < playerScore.length; i++) {
-    sum += playerScore[i];
-  }
-  let string = sum.toString();
-  return string;
+function sum(who) {
+  const sumDealer = dealerScore.reduce((acc, val) => acc + val, 0);
+  return sumDealer;
 }
-playerPoints.textContent = sumPlayer();
 
 //dealer points
 const dealerPoints = document.querySelector("#dealer-points");
 const sumDealer = dealerScore.reduce((acc, val) => acc + val, 0);
-dealerPoints.textContent = sumDealer;
