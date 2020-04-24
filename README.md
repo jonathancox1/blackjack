@@ -1,3 +1,3 @@
 # blackjack
 
-built with Javascrip
+built with Javascript
