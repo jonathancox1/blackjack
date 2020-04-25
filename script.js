@@ -69,12 +69,15 @@ function renderCards(who, dealOrHit) {
   let thingToAppend = document.createElement("div");
   thingToAppend.innerHTML = dealOrHit;
   who.appendChild(thingToAppend);
+  requestAnimationFrame(() => {
+    thingToAppend.firstElementChild.classList.remove("fade-out"); // only displays correctly when modal appears ?????
+  });
 }
 
 // render 1 card Hit function
 function hitMe(url) {
   return `
-    <img src="${url}" width="80px">
+    <img src="${url}" width="80px" class="cardTrans fade-out" id="card">
     `;
 }
 
@@ -155,8 +158,9 @@ function sum(who) {
 }
 // refresh function for when the someone has won
 function refresh() {
-  console.log("timeout");
+  // 3000ms timeout, then reload the JS file
   setTimeout(location.reload.bind(window.location), 3000);
+  // call the modal
   $("#exampleModalCenter").modal("show");
 }
 //dealer points

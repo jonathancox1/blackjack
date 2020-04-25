@@ -7,6 +7,15 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
+
+    <style>
+        .cardTrans {
+            transition: opacity 1s;
+        }
+        .fade-out {
+            opacity: 0;
+        }
+    </style>
     
 
 
@@ -29,12 +38,12 @@
 
 
 
-
+<div class="container" style="margin-top: 120px;">
 
     <div class="row m-5">
-    <div id="table" class="col my-auto">
-        <div class="card p-5 bg-success text-center">
-            <div class="card-header text-center bg-light">BlackJack</div>
+    <div id="table" class="container-fluid">
+        <div class="col p-5 bg-success text-center rounded-circle border border-dark">
+            <div class="text-center bg-light rounded mx-auto" style="width: 300px;"><h3>BlackJack in Javascript</h3></div>
         
         <div id="messages"></div>
         
@@ -42,7 +51,7 @@
         
         <label id="dealer-points" class="points"></label>
         
-        <div id="dealer-hand" class="hand row mx-auto pb-3">
+        <div id="dealer-hand" class="hand row mx-auto" style="height: 150px; width: 400px;">
            <!-- insert cards here -->
         </div>
         
@@ -50,23 +59,23 @@
         
         <label id="player-points" class="points"></label>
         
-        <div id="player-hand" class="hand row mx-auto pb-3">
+        <div id="player-hand" class="hand row mx-auto" style="height: 150px; width: 400px;">
            <!-- insert cards here -->
         </div>
         
         <div class="buttons">
         
-        <button id="deal-button">Deal</button>
+        <button id="deal-button" class="btn btn-outline-success bg-light">Deal</button>
         
-        <button id="hit-button">Hit</button>
+        <button id="hit-button" class="btn btn-outline-success bg-light">Hit</button>
         
-        <button id="stand-button">Stand</button>
+        <button id="stand-button" class="btn btn-outline-success bg-light">Stand</button>
         
         </div>
         
     </div>
 </div>
-
+</div>
 <script src="script.js"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
