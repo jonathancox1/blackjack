@@ -68,16 +68,14 @@ buttons.addEventListener("click", function (e) {
 function renderCards(who, dealOrHit) {
   let thingToAppend = document.createElement("div");
   thingToAppend.innerHTML = dealOrHit;
+
   who.appendChild(thingToAppend);
-  requestAnimationFrame(() => {
-    thingToAppend.firstElementChild.classList.remove("fade-out"); // only displays correctly when modal appears ?????
-  });
 }
 
 // render 1 card Hit function
 function hitMe(url) {
   return `
-    <img src="${url}" width="80px" class="cardTrans fade-out" id="card">
+    <img src="${url}" width="80px class="card">
     `;
 }
 
@@ -114,8 +112,15 @@ function getCard(who) {
 
 // add card points to score
 function addToScore(who, card) {
-  console.log(`${card.point} added to ${who}`);
-  who.push(card.point);
+  let pointValue = 0;
+  if (card.point > 10) {
+    console.log(`${pointValue} added to ${who}`);
+    pointValue = 10;
+  } else {
+    pointValue = card.point;
+    console.log(`${pointValue} added to ${who}`);
+  }
+  who.push(pointValue);
 }
 
 const playerScore = [];
