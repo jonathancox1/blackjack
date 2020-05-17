@@ -9,4 +9,4 @@ Functional Programming, Javascript, HTML5, CSS3, Bootstrap4
 - Functional Programming 
 - Creating functions that allow for random results
 - User interactivity and calculating scores
-- Refactoring for cleaner more consistanct code
+- Refactoring for cleaner more consistent code
