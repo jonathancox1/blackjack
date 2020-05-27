@@ -29,7 +29,6 @@ const dealButton = document.querySelector("#deal-button");
 
 // get hit button
 const hitButton = document.querySelector("#hit-button");
-// add event listener
 
 // get the dealers hand
 const dealersHand = document.querySelector("#dealer-hand");
@@ -51,8 +50,8 @@ buttons.addEventListener("click", function (e) {
     renderCards(playersHand, hitMe(getCard(playerScore)));
     renderCards(dealersHand, hitMe(getCard(dealerScore)));
     renderCards(dealersHand, hitMe(getCard(dealerScore)));
-    playerPoints.textContent = sum(playerScore); // only sums for dealer, need to add argument
-    dealerPoints.textContent = sum(dealerScore); // only sums for dealer, need to add argument
+    playerPoints.textContent = sum(playerScore);
+    dealerPoints.textContent = sum(dealerScore);
   } else if (event.target.id === "hit-button") {
     //hit button
     renderCards(playersHand, hitMe(getCard(playerScore)));
@@ -113,7 +112,7 @@ function getCard(who) {
 // add card points to score
 function addToScore(who, card) {
   let pointValue = 0;
-  if (card.point > 10) {
+  if (card.point >= 10) {
     console.log(`${pointValue} added to ${who}`);
     pointValue = 10;
   } else {
@@ -128,6 +127,9 @@ const dealerScore = [];
 
 //player points
 const playerPoints = document.querySelector("#player-points");
+
+//dealer points
+const dealerPoints = document.querySelector("#dealer-points");
 
 // sum points function
 function sum(who) {
@@ -168,6 +170,3 @@ function refresh() {
   // call the modal
   $("#exampleModalCenter").modal("show");
 }
-//dealer points
-const dealerPoints = document.querySelector("#dealer-points");
-const sumDealer = dealerScore.reduce((acc, val) => acc + val, 0);

@@ -1,27 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BlackJack | Javascript</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BlackJack | Javascript</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
-<body>
 
-    
-
+<body class="bg-success">
 
 
-  
+
+
+
+
   <!-- Modal -->
-  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-body text-center" id="modalContent">
         </div>
         <div class="modal-body text-center">
-            <div class="spinner-border text-center text-success" role="status">
-            </div>
+          <div class="spinner-border text-center text-success" role="status">
+          </div>
         </div>
       </div>
     </div>
@@ -29,47 +33,56 @@
 
 
 
-<div class="container" style="margin-top: 120px;">
+  <div class="container" style="margin-top: 120px;">
 
     <div class="row m-5">
-    <div id="table" class="container-fluid">
-        <div class="col p-5 bg-success text-center rounded-circle border border-dark">
-            <div class="text-center bg-light rounded mx-auto" style="width: 300px;"><h3>BlackJack in Javascript</h3></div>
-        
-        <div id="messages"></div>
-        
-        <label>Dealer: </label>
-        
-        <label id="dealer-points" class="points"></label>
-        
-        <div id="dealer-hand" class="hand row mx-auto" style="height: 150px; width: 400px;">
-           <!-- insert cards here -->
+      <div id="table" class="container-fluid">
+        <div class="col p-5 bg-light text-center rounded-circle border border-dark">
+          <div class="text-center bg-light rounded mx-auto" style="width: 300px;">
+            <h3>BlackJack in Javascript</h3>
+          </div>
+
+          <div id="messages"></div>
+
+          <label>Dealer: </label>
+
+          <label id="dealer-points" class="points"></label>
+
+          <div id="dealer-hand" class="hand row mx-auto" style="height: 150px; width: 400px;">
+            <!-- insert cards here -->
+          </div>
+
+          <label>Player: </label>
+
+          <label id="player-points" class="points"></label>
+
+          <div id="player-hand" class="hand row mx-auto" style="height: 150px; width: 400px;">
+            <!-- insert cards here -->
+          </div>
+
+          <div class="buttons">
+
+            <button id="deal-button" class="btn btn-outline-success bg-light">Deal</button>
+
+            <button id="hit-button" class="btn btn-outline-success bg-light">Hit</button>
+
+            <button id="stand-button" class="btn btn-outline-success bg-light">Stand</button>
+
+          </div>
+
         </div>
-        
-        <label>Player: </label>
-        
-        <label id="player-points" class="points"></label>
-        
-        <div id="player-hand" class="hand row mx-auto" style="height: 150px; width: 400px;">
-           <!-- insert cards here -->
-        </div>
-        
-        <div class="buttons">
-        
-        <button id="deal-button" class="btn btn-outline-success bg-light">Deal</button>
-        
-        <button id="hit-button" class="btn btn-outline-success bg-light">Hit</button>
-        
-        <button id="stand-button" class="btn btn-outline-success bg-light">Stand</button>
-        
-        </div>
-        
+      </div>
     </div>
-</div>
-</div>
-<script src="script.js"></script>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"></script>
 </body>
+
 </html>
